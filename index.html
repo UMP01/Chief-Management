@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ចុងភៅពិសេស</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+</head>
+
+<style>
+    #header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #ffffff;
+        z-index: 1000;
+        padding: 10px;
+        box-shadow: 0 1px 5px #b7d2f0;
+        color: #007bff;
+    }
+    #menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Two items per row */
+        gap: 16px; /* Space between items */
+    }
+    button {
+        font-family: 'Khmer OS Content', sans-serif;
+        font-size: small;
+        src: url('fonts/Khmer OS Content Regular.ttf') format('truetype');
+    }
+    .tab-bar {
+        display: flex;
+        justify-content: space-between;
+        background-color: #f3f4f6;
+        border-bottom: 1px solid #ddd;
+        position: fixed;
+        top: 50px;
+        width: 100%;
+        z-index: 999;
+    }
+    .tab-bar button {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        background: none;
+        font-size: 14px;
+        color: #555;
+    }
+    .tab-bar button.active {
+        color: #007bff;
+        font-weight: bold;
+        border-bottom: 2px solid #007bff;
+    }
+    .content {
+        padding-top: 110px;
+    }
+</style>
+
+<body class="bg-gray-100">
+    <div id="header" class="text-center font-bold text-xl">
+        ចុងភៅពិសេស
+    </div>
+    
+    <!-- Tab Bar Navigation -->
+    <div class="tab-bar">
+        <button id="tab-all" class="active" onclick="filterMenu('all')">ទាំងអស់</button>
+        <button id="tab-main" onclick="filterMenu('main')">ម្ហូបសំខាន់</button>
+        <button id="tab-desserts" onclick="filterMenu('desserts')">បង្អែម</button>
+        <button id="tab-drinks" onclick="filterMenu('drinks')">ភេសជ្ជៈ</button>
+    </div>
+
+    <div id="menu-page" class="content p-4">
+        <div id="menu" class="grid grid-cols-2 gap-4">
+            <!-- Menu Items will be dynamically added here -->
+        </div>
+        <button onclick="goToCart()"
+                class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg">មើលទំនិញ</button>
+    </div>
+    
+    <!-- Cart Page -->
+    <div id="cart-page" class="content hidden p-4">
+        <h1 class="text-2xl font-bold mb-4">ទំនិញរបស់អ្នក</h1>
+        <div id="cart-items" class="space-y-4">
+            <!-- Cart Items will be dynamically added here -->
+        </div>
+        <div id="cart-summary" class="mt-4">
+            <p class="font-semibold">តម្លៃសរុប: <span id="cart-total">$0.00</span></p>
+        </div>
+        <button onclick="goToMenu()" class="mt-4 bg-gray-200 text-black p-2 rounded w-full" style="margin-bottom: 10px;">ត្រឡប់ក្រោយ</button>
+        <button onclick="checkout()" class="mt-2 bg-green-500 text-white p-2 rounded w-full">បញ្ជាទិញ</button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="js/sweetalert2.min.js"></script>
+    <script src="js/sweetalert2@11.js"></script>
+    <script>
+        let menuItems = [];
+
+        // Fetch menu items from a JSON file
+        async function loadMenuItems() {
+            menuItems = [
+                { id: 1, name: "ភីហ្សា", price: 12.99, image: "images/pizza.webp", category: "main" },
+                { id: 2, name: "នំបញ្ចុក", price: 8.99, image: "images/នំបញ្ចុក.jpg", category: "main" },
+                { id: 3, name: "ឆាស្ពីជូរ", price: 10.99, image: "images/ឆាស្ពីជូរ.jpg", category: "main" },
+                { id: 4, name: "មាន់ដុតទឹកឃ្មុំ", price: 15.99, image: "images/មាន់ដុតទឹកឃ្មុំ.jpg", category: "main" },
+                { id: 5, name: "ឆ្អឹងជំនីជ្រូកបំពង", price: 15.99, image: "images/ឆ្អឹងជំនីជ្រូកបំពង.jpg", category: "desserts" },
+                { id: 6, name: "សម្លរចាប់ឆាយ", price: 15.99, image: "images/សម្លរចាប់ឆាយ.jpg", category: "desserts" },
+                { id: 7, name: "ម្ហូបក្លែម ៨មុខ", price: 15.99, image: "images/ម្ហូបក្លែម ៨មុខ.jpg", category: "desserts" },
+                { id: 8, name: "បាយឆាម្រះព្រៅ", price: 15.99, image: "images/បាយឆាម្រះព្រៅ.jpg", category: "drinks" },
+                { id: 9, name: "សម្លរការី", price: 15.99, image: "images/សម្លរការី.jpg", category: "drinks" },
+            ];
+            renderMenu();
+        }
+
+        const cart = [];
+
+        function renderMenu(filter = "all") {
+            const menuContainer = document.getElementById('menu');
+            menuContainer.innerHTML = '';
+            const filteredItems = filter === "all" ? menuItems : menuItems.filter(item => item.category === filter);
+
+            filteredItems.forEach(item => {
+                const imageSrc = item.image ? item.image : "images/noimage.png";
+                const menuItem = document.createElement('div');
+                menuItem.className = "flex items-center bg-white p-4 rounded shadow";
+                menuItem.innerHTML = `
+                    <img src="${imageSrc}" alt="${item.name}" class="w-24 h-20 rounded mr-4" style="width: 132px;height: 120px;">
+                    <div class="flex justify-between items-center w-full">
+                        <span class="font-semibold">${item.name}</span><br>
+                        <span class="font-semibold">$${item.price.toFixed(2)}</span>
+                        <button onclick="addToCart(${item.id})" class="bg-blue-500 text-white px-4 py-2 rounded" style="width: inherit">បន្ថែម</button>
+                    </div>
+                `;
+                menuContainer.appendChild(menuItem);
+            });
+        }
+
+        function renderCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            cartItemsContainer.innerHTML = '';
+
+            let total = 0;
+            cart.forEach(item => {
+                const imageSrc = item.image ? item.image : "images/noimage.png";
+                const cartItem = document.createElement('div');
+                cartItem.className = "flex justify-between items-center bg-white p-4 rounded shadow";
+                cartItem.innerHTML = `
+                    <div class="col-12">
+                        <div class="col-9">
+                            <span>${item.name} - $${item.price.toFixed(2)}</span>
+                        </div>
+                        <div class="col-3">
+                            <button onclick="removeFromCart(${item.id})" class="bg-red-500 text-white px-4 py-2 rounded">ដកចេញ</button>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+                total += item.price;
+            });
+
+            cartTotalElement.textContent = `$${total.toFixed(2)}`;
+        }
+
+        function addToCart(itemId) {
+            const item = menuItems.find(i => i.id === itemId);
+            cart.push(item);
+            Swal.fire({
+                icon: 'success',
+                title: 'បានបន្ថែម',
+                text: `${item.name} បានបន្ថែមទៅរទេះ!`,
+                confirmButtonText: 'យល់ព្រម',
+            });
+        }
+
+        function removeFromCart(itemId) {
+            const index = cart.findIndex(i => i.id === itemId);
+            if (index !== -1) {
+                cart.splice(index, 1);
+                renderCart();
+            }
+        }
+
+        function goToCart() {
+            document.getElementById('menu-page').classList.add('hidden');
+            document.getElementById('cart-page').classList.remove('hidden');
+            renderCart();
+        }
+
+        function goToMenu() {
+            document.getElementById('cart-page').classList.add('hidden');
+            document.getElementById('menu-page').classList.remove('hidden');
+        }
+
+        function checkout() {
+            Swal.fire({
+                icon: 'success',
+                title: 'សូមអរគុណ!',
+                text: 'ការបញ្ជាទិញរបស់អ្នកត្រូវបានទទួល!',
+                confirmButtonText: 'យល់ព្រម',
+            }).then(() => {
+                cart.length = 0;
+                goToMenu();
+            });
+        }
+
+        function updateActiveTab(tabId) {
+            document.querySelectorAll(".tab-bar button").forEach(button => button.classList.remove("active"));
+            document.getElementById(tabId).classList.add("active");
+        }
+
+        function filterMenu(category) {
+            const tabMap = { all: "tab-all", main: "tab-main", desserts: "tab-desserts", drinks: "tab-drinks" };
+            updateActiveTab(tabMap[category]);
+            renderMenu(category);
+        }
+
+        // Initialize Menu
+        loadMenuItems();
+    </script>
+</body>
+
+</html>

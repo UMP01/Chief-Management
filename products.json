@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "name": "ភីហ្សា",
+        "price": 12.99,
+        "image": "images/pizza.webp",
+        "category": "main"
+    },
+    {
+        "id": 2,
+        "name": "នំបញ្ចុក",
+        "price": 8.99,
+        "image": "images/នំបញ្ចុក.jpg",
+        "category": "main"
+    },
+    {
+        "id": 3,
+        "name": "ឆាស្ពីជូរ",
+        "price": 10.99,
+        "image": "images/ឆាស្ពីជូរ.jpg",
+        "category": "main"
+    },
+    {
+        "id": 4,
+        "name": "មាន់ដុតទឹកឃ្មុំ",
+        "price": 15.99,
+        "image": "images/មាន់ដុតទឹកឃ្មុំ.jpg",
+        "category": "main"
+    },
+    {
+        "id": 5,
+        "name": "ឆ្អឹងជំនីជ្រូកបំពង",
+        "price": 15.99,
+        "image": "images/ឆ្អឹងជំនីជ្រូកបំពង.jpg",
+        "category": "desserts"
+    },
+    {
+        "id": 6,
+        "name": "សម្លរចាប់ឆាយ",
+        "price": 15.99,
+        "image": "images/សម្លរចាប់ឆាយ.jpg",
+        "category": "desserts"
+    },
+    {
+        "id": 7,
+        "name": "ម្ហូបក្លែម ៨មុខ",
+        "price": 15.99,
+        "image": "images/ម្ហូបក្លែម ៨មុខ.jpg",
+        "category": "desserts"
+    },
+    {
+        "id": 8,
+        "name": "បាយឆាម្រះព្រៅ",
+        "price": 15.99,
+        "image": "images/បាយឆាម្រះព្រៅ.jpg",
+        "category": "drinks"
+    },
+    {
+        "id": 9,
+        "name": "សម្លរការី",
+        "price": 15.99,
+        "image": "images/សម្លរការី.jpg",
+        "category": "drinks"
+    }
+]
