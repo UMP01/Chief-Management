@@ -290,18 +290,20 @@
 
             const orderDetails = cart.map(item => `${item.name} ($${item.price.toFixed(2)})`).join(', ');
             const totalPrice = cart.reduce((total, item) => total + item.price, 0).toFixed(2);
+            const cartList = cart.map(item => `- ${item.name} ($${item.price.toFixed(2)})`).join('\n');
 
             const message = `
-                🛒 ការបញ្ជាទិញថ្មី
-                👤 ឈ្មោះ: ${username}
-                📞 លេខទូរស័ព្ទ: ${phone}
-                📋 បញ្ជី: ${orderDetails}
-                💰 តម្លៃសរុប: $${totalPrice}
+        🛒 ការបញ្ជាទិញថ្មី
+        👤 ឈ្មោះ: ${username}
+        📞 លេខទូរស័ព្ទ: ${phone}
+        📋 បញ្ជី: 
+        ${cartList}
+        💰 តម្លៃសរុប: $${totalPrice}
             `;
 
             // Send order details to Telegram bot
-            const TELEGRAM_BOT_TOKEN = '6720606437:AAEW6_UJlax78-hosqcbs5L9T3VFvKJiLoM'; // Replace with your Telegram Bot Token
-            const CHAT_ID = '@phoudychannel'; // Replace with your Telegram Chat ID
+            const TELEGRAM_BOT_TOKEN = '7072917385:AAHd9Ows0EoksVkdLGuq7irwsbHuT422fkU'; // Replace with your Telegram Bot Token
+            const CHAT_ID = '@foodorderump'; // Replace with your Telegram Chat ID
             const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
             try {
