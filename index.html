@@ -4,138 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ចុងភៅពិសេស</title>
+    <title>ចុងភៅណា គីមហេង</title>
     <link rel="stylesheet" href="css/styles.css">
     <!-- SweetAlert2 CSS -->
-    <link rel="stylesheet" href="css/sweetalert2.min.css">
+    <!--    <link rel="stylesheet" href="css/sweetalert2.min.css">-->
 </head>
-
-<style>
-    #header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background-color: #ffffff;
-        z-index: 1000;
-        padding: 10px;
-        box-shadow: 0 1px 5px #b7d2f0;
-        color: #007bff;
-    }
-    #menu {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Two items per row */
-        gap: 16px; /* Space between items */
-    }
-    button {
-        font-family: 'Khmer OS Content', sans-serif;
-        font-size: small;
-        src: url('fonts/Khmer OS Content Regular.ttf') format('truetype');
-    }
-    .tab-bar {
-        display: flex;
-        justify-content: space-between;
-        background-color: #f3f4f6;
-        border-bottom: 1px solid #ddd;
-        position: fixed;
-        top: 50px;
-        width: 100%;
-        z-index: 999;
-    }
-    .tab-bar button {
-        flex: 1;
-        padding: 10px;
-        border: none;
-        background: none;
-        font-size: 14px;
-        color: #555;
-    }
-    .tab-bar button.active {
-        color: #007bff;
-        font-weight: bold;
-        border-bottom: 2px solid #007bff;
-    }
-    .content {
-        padding-top: 110px;
-    }
-    #user-details {
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 16px;
-        margin-top: 16px;
-    }
-
-    #user-details h2 {
-        color: #333;
-        font-size: 1.25rem;
-        margin-bottom: 8px;
-        text-align: center;
-    }
-
-    #user-details label {
-        font-size: 1rem;
-        color: #555;
-        margin-bottom: 4px;
-        display: block;
-    }
-
-    #user-details input {
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 8px;
-        font-size: 1rem;
-        width: 100%;
-        margin-bottom: 12px;
-        outline: none;
-        box-sizing: border-box;
-    }
-
-    #user-details input:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
-    }
-
-    #user-details .submit-btn {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        background-color: #28a745;
-        color: #ffffff;
-        font-size: 1rem;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        text-align: center;
-    }
-
-    #user-details .submit-btn:hover {
-        background-color: #218838;
-    }
-</style>
 
 <body class="bg-gray-100">
     <div id="header" class="text-center font-bold text-xl">
-        ចុងភៅពិសេស
+        ចុងភៅណា គីមហេង
     </div>
-    
+
     <!-- Tab Bar Navigation -->
-    <div class="tab-bar">
-        <button id="tab-all" class="active" onclick="filterMenu('all')">ទាំងអស់</button>
-        <button id="tab-main" onclick="filterMenu('main')">ម្ហូបសំខាន់</button>
-        <button id="tab-desserts" onclick="filterMenu('desserts')">បង្អែម</button>
-        <button id="tab-drinks" onclick="filterMenu('drinks')">ភេសជ្ជៈ</button>
+    <div class="tab-bar-container">
+        <div class="tab-bar">
+            <button id="tab-all" class="active" onclick="filterMenu('all')">ទាំងអស់</button>
+            <button id="tab-accessories" onclick="filterMenu('accessories')">គ្រឿងក្លែម</button>
+            <button id="tab-cookware" onclick="filterMenu('cookware')">គ្រឿងឆ្នាំងភ្លើង</button>
+            <button id="tab-soup" onclick="filterMenu('soup')">គ្រឿងស៊ុប</button>
+            <button id="tab-food" onclick="filterMenu('food')">គ្រឿងញ៉ាំ</button>
+            <button id="tab-frying" onclick="filterMenu('frying')">គ្រឿងបំពង គ្រឿងឆា</button>
+            <button id="tab-dessert" onclick="filterMenu('dessert')">គ្រឿងបាយ មីឆា បង្អែម</button>
+        </div>
     </div>
 
     <div id="menu-page" class="content p-4">
         <div id="menu" class="grid grid-cols-2 gap-4">
             <!-- Menu Items will be dynamically added here -->
         </div>
-        <button onclick="goToCart()"
-                class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg">មើលទំនិញ</button>
+        <button onclick="goToCart()" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg">មើលទំនិញ</button>
     </div>
-    
+
     <!-- Cart Page -->
-    <div id="cart-page" class="content hidden p-4">
+    <div id="cart-page" class="content hidden p-4" style="padding-top: 55px;">
+        <h1 class="text-2xl font-bold mb-4">ទំនិញរបស់អ្នក</h1>
+        <div id="cart-items" class="space-y-4">
+            <!-- Cart Items will be dynamically added here -->
+        </div>
+
         <!-- User Details Section -->
         <div id="user-details" class="mt-4">
             <h2 class="text-lg font-bold mb-2">ព័ត៌មានរបស់អ្នក</h2>
@@ -148,43 +54,28 @@
                 <input type="text" id="phone" placeholder="">
             </div>
         </div>
-
-        <h1 class="text-2xl font-bold mb-4">ទំនិញរបស់អ្នក</h1>
-        <div id="cart-items" class="space-y-4">
-            <!-- Cart Items will be dynamically added here -->
-        </div>
-        <div id="cart-summary" class="mt-4">
-            <p class="font-semibold">តម្លៃសរុប: <span id="cart-total">$0.00</span></p>
-        </div>
-        <button onclick="goToMenu()" class="mt-4 bg-gray-200 text-black p-2 rounded w-full" style="margin-bottom: 10px;">ត្រឡប់ក្រោយ</button>
+        <button onclick="goToMenu()" class="mt-4 bg-gray-200 text-black p-2 rounded w-full"
+            style="margin-bottom: 10px; margin-top: 20px;">ត្រឡប់ក្រោយ</button>
         <button onclick="checkout()" class="mt-2 bg-green-500 text-white p-2 rounded w-full">បញ្ជាទិញ</button>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- SweetAlert2 JS -->
     <script src="js/sweetalert2.min.js"></script>
     <script src="js/sweetalert2@11.js"></script>
     <script>
         let menuItems = [];
+        const cart = [];
 
         // Fetch menu items from a JSON file
         async function loadMenuItems() {
-            menuItems = [
-                { id: 1, name: "ភីហ្សា", price: 12.99, image: "images/pizza.webp", category: "main" },
-                { id: 2, name: "នំបញ្ចុក", price: 8.99, image: "images/នំបញ្ចុក.jpg", category: "main" },
-                { id: 3, name: "ឆាស្ពីជូរ", price: 10.99, image: "images/ឆាស្ពីជូរ.jpg", category: "main" },
-                { id: 4, name: "មាន់ដុតទឹកឃ្មុំ", price: 15.99, image: "images/មាន់ដុតទឹកឃ្មុំ.jpg", category: "main" },
-                { id: 5, name: "ឆ្អឹងជំនីជ្រូកបំពង", price: 15.99, image: "images/ឆ្អឹងជំនីជ្រូកបំពង.jpg", category: "desserts" },
-                { id: 6, name: "សម្លរចាប់ឆាយ", price: 15.99, image: "images/សម្លរចាប់ឆាយ.jpg", category: "desserts" },
-                { id: 7, name: "ម្ហូបក្លែម ៨មុខ", price: 15.99, image: "images/ម្ហូបក្លែម ៨មុខ.jpg", category: "desserts" },
-                { id: 8, name: "បាយឆាម្រះព្រៅ", price: 15.99, image: "images/បាយឆាម្រះព្រៅ.jpg", category: "drinks" },
-                { id: 9, name: "សម្លរការី", price: 15.99, image: "images/សម្លរការី.jpg", category: "drinks" },
-            ];
-            renderMenu();
+            try {
+                const response = await fetch('products.json');
+                menuItems = await response.json();
+                renderMenu();
+            } catch (error) {
+                console.error('Error loading menu items:', error);
+            }
         }
-
-        const cart = [];
 
         function renderMenu(filter = "all") {
             const menuContainer = document.getElementById('menu');
@@ -195,43 +86,65 @@
                 const imageSrc = item.image ? item.image : "images/noimage.png";
                 const menuItem = document.createElement('div');
                 menuItem.className = "flex items-center bg-white p-4 rounded shadow";
-                menuItem.innerHTML = `
+                // Check if the name contains parentheses and split it
+                const nameParts = item.name.split(' (');
+                let mainName = nameParts[0];
+                let subName = nameParts.length > 1 ? '(' + nameParts[1] : '';
+
+                // If the name has parentheses, split it into two spans
+                const menuItemHTML = `
                     <img src="${imageSrc}" alt="${item.name}" class="w-24 h-20 rounded mr-4" style="width: 132px;height: 120px;">
                     <div class="flex justify-between items-center w-full">
-                        <span class="font-semibold">${item.name}</span><br>
-                        <span class="font-semibold">$${item.price.toFixed(2)}</span>
-                        <button onclick="addToCart(${item.id})" class="bg-blue-500 text-white px-4 py-2 rounded" style="width: inherit">បន្ថែម</button>
+                    <span class="font-semibold">${mainName}</span><br>
+                    <span class="font-semibold">${subName}</span>
+                    <button onclick="addToCart(${item.id})" class="bg-red-500 text-white px-4 py-2 rounded" style="width: inherit">បន្ថែម</button>
                     </div>
                 `;
+                menuItem.innerHTML = menuItemHTML;
                 menuContainer.appendChild(menuItem);
             });
         }
 
         function renderCart() {
             const cartItemsContainer = document.getElementById('cart-items');
-            const cartTotalElement = document.getElementById('cart-total');
             cartItemsContainer.innerHTML = '';
 
-            let total = 0;
-            cart.forEach(item => {
-                const imageSrc = item.image ? item.image : "images/noimage.png";
-                const cartItem = document.createElement('div');
-                cartItem.className = "flex justify-between items-center bg-white p-4 rounded shadow";
-                cartItem.innerHTML = `
-                    <div class="col-12">
-                        <div class="col-9">
-                            <span>${item.name} - $${item.price.toFixed(2)}</span>
-                        </div>
-                        <div class="col-3">
-                            <button onclick="removeFromCart(${item.id})" class="bg-red-500 text-white px-4 py-2 rounded">ដកចេញ</button>
-                        </div>
-                    </div>
+            // Create table structure
+            const table = document.createElement('table');
+            table.className = "w-full border-collapse border border-gray-300";
+
+            // Add table header
+            table.innerHTML = `
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border border-gray-300 p-2 text-left">No.</th>
+                        <th class="border border-gray-300 p-2 text-left">ឈ្មោះទំនិញ</th>
+                        <th class="border border-gray-300 p-2"></th>    
+                    </tr>
+                </thead>
+                <tbody id="cart-table-body"></tbody>
+            `;
+
+            // Add table rows
+            const tbody = table.querySelector('#cart-table-body');
+            cart.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.className = "bg-white";
+
+                row.innerHTML = `
+                    <td class="border border-gray-300 p-2" style="text-align: center;">${index + 1}</td>
+                    <td class="border border-gray-300 p-2">${item.name}</td>
+                    <td class="border border-gray-300 p-2" style="text-align: center;">
+                        <button
+                            onclick="removeFromCart(${item.id})"
+                            class="bg-red-500 text-white px-4 py-2 rounded">ដកចេញ</button>
+                    </td>
                 `;
-                cartItemsContainer.appendChild(cartItem);
-                total += item.price;
+                tbody.appendChild(row);
             });
 
-            cartTotalElement.textContent = `$${total.toFixed(2)}`;
+            // Append table to the container
+            cartItemsContainer.appendChild(table);
         }
 
         function addToCart(itemId) {
@@ -256,12 +169,14 @@
         function goToCart() {
             document.getElementById('menu-page').classList.add('hidden');
             document.getElementById('cart-page').classList.remove('hidden');
+            document.querySelector('.tab-bar-container').style.display = 'none';
             renderCart();
         }
 
         function goToMenu() {
             document.getElementById('cart-page').classList.add('hidden');
             document.getElementById('menu-page').classList.remove('hidden');
+            document.querySelector('.tab-bar-container').style.display = 'flex';
         }
 
         async function checkout() {
@@ -288,22 +203,20 @@
                 return;
             }
 
-            const orderDetails = cart.map(item => `${item.name} ($${item.price.toFixed(2)})`).join(', ');
-            const totalPrice = cart.reduce((total, item) => total + item.price, 0).toFixed(2);
-            const cartList = cart.map(item => `- ${item.name} ($${item.price.toFixed(2)})`).join('\n');
+            const orderDetails = cart.map(item => `${item.name}`).join(', ');
+            const cartList = cart.map(item => `- ${item.name}`).join('\n');
 
             const message = `
         🛒 ការបញ្ជាទិញថ្មី
         👤 ឈ្មោះ: ${username}
         📞 លេខទូរស័ព្ទ: ${phone}
-        📋 បញ្ជី: 
+        📋 បញ្ជី:
         ${cartList}
-        💰 តម្លៃសរុប: $${totalPrice}
             `;
 
             // Send order details to Telegram bot
             const TELEGRAM_BOT_TOKEN = '7670868218:AAFJZx7mNS-bT27Xw8JpPIUzae0lYV9IDVI'; // Replace with your Telegram Bot Token
-            const CHAT_ID = '@foodorderump'; // Replace with your Telegram Chat ID
+            const CHAT_ID = '@fryingorderump'; // Replace with your Telegram Chat ID
             const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
             try {
@@ -341,7 +254,15 @@
         }
 
         function filterMenu(category) {
-            const tabMap = { all: "tab-all", main: "tab-main", desserts: "tab-desserts", drinks: "tab-drinks" };
+            const tabMap = { 
+                all: "tab-all", 
+                accessories: "tab-accessories", 
+                cookware: "tab-cookware", 
+                soup: "tab-soup", 
+                food: "tab-food", 
+                frying: "tab-frying", 
+                dessert: "tab-dessert"
+            };
             updateActiveTab(tabMap[category]);
             renderMenu(category);
         }
