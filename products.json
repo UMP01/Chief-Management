@@ -100,7 +100,7 @@
     { "id": 95, "name": "បង្កងខ្ទិះ", "image": "", "category": "frying" },
     { "id": 96, "name": "មាន់រ៉ូទី", "image": "", "category": "frying" },
     { "id": 97, "name": "គ្រួចបំពង", "image": "", "category": "frying" },
-    { "id": 98, "name": "ហុងជើងជ្រូក", "image": "", "category": "frying" },
+    { "id": 98, "name": "ហុងជើងជ្រូក", "image": "images/ហុងជើងជ្រូក.jpg", "category": "frying" },
     { "id": 99, "name": "គ្រូចអាំង", "image": "", "category": "frying" },
     { "id": 100, "name": "បង្គាខ្ទិះ", "image": "", "category": "frying" },
     { "id": 101, "name": "មាន់ទឹម", "image": "", "category": "frying" },
@@ -142,5 +142,9 @@
     { "id": 136, "name": "បង្អែម ៤រដូវត្រាវកូរ", "image": "", "category": "dessert" },
     { "id": 137, "name": "បង្អែម ជាតិ១០ចាន", "image": "", "category": "dessert" },
     { "id": 138, "name": "ការ៉េម", "image": "", "category": "dessert" },
-    { "id": 139, "name": "ទំពាំងបាយជូរ", "image": "", "category": "dessert" }
+    { "id": 139, "name": "ទំពាំងបាយជូរ", "image": "", "category": "dessert" },
+
+    { "id": 140, "name": "ស៊ុប ប៉ាវហ៊ី", "image": "images/ស៊ុប ប៉ាវហ៊ី.jpg", "category": "soup" },
+    { "id": 141, "name": "ឆាសរសៃកែង", "image": "images/ឆាសរសៃកែង.jpg", "category": "frying" },
+    { "id": 82, "name": "ស្ថេកសាច់គោ", "image": "images/ស្ថេកសាច់គោ.jpg", "category": "food" }
 ]
