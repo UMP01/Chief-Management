@@ -230,14 +230,7 @@
             const orderDetails = cart.map(item => `${item.name}`).join(', ');
             const cartList = cart.map(item => `- ${item.name}`).join('\n');
 
-            const message = `
-        🛒 ការបញ្ជាទិញថ្មី
-        📅 កាលបរិច្ឆេទកម្មវិធី: ${date}
-        👤 ឈ្មោះ: ${username}
-        📞 លេខទូរស័ព្ទ: ${phone}
-        📋 បញ្ជី:
-        ${cartList}
-            `;
+            const message = `🛒 ការបញ្ជាទិញថ្មី'\n'📅 កាលបរិច្ឆេទកម្មវិធី: ${date}'\n'👤 ឈ្មោះ: ${username}'\n'📞 លេខទូរស័ព្ទ: ${phone}'\n'📋 បញ្ជី:'\n'${cartList}`;
 
             const TELEGRAM_BOT_TOKEN = '7670868218:AAFJZx7mNS-bT27Xw8JpPIUzae0lYV9IDVI';
             const CHAT_ID = '@foodorderump';
