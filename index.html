@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ចុងភៅណា គីមហេង</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<style>
+    .welcome-container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .welcome-image {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .welcome-title {
+        font-size: 2.2rem;
+        color: #f3b541;
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-family: 'Khmer OS Muol Light', sans-serif;
+        text-shadow: 0 3px 3px rgba(14, 9, 9, 0.1);
+    }
+
+    .welcome-text {
+        color: #f3b541;
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-family: 'Khmer OS Content', sans-serif;
+    }
+
+    .welcome-button {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        background-color: #f8aa1a;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        font-family: 'Khmer OS Muol Light', sans-serif;
+        margin-bottom: 20px;
+    }
+
+    .welcome-button:hover {
+        background-color: #b02a37;
+        transform: scale(1.05);
+    }
+</style>
+
+<body class="d-flex justify-content-center align-items-center vh-100" style="background-color: #f71b31;">
+    <div class="welcome-container">
+        <h1 class="welcome-title">ស្វាគមន៍មកកាន់</h1>
+        <img src="images/logo.png" alt="Welcome Image" class="welcome-image"><br>
+        <button onclick="goToHome()" class="welcome-button" style="width: inherit">ទៅកាន់ម៉ឺនុយ</button><br>
+        <span class="welcome-text">អាសយដ្ឋាន: បុរី លីមឈាងហាក់ ផ្ទះលេខ 08D សង្កាត់វាលស្បូវ ខណ្ឌច្បាអំពៅ ភ្នំពេញ</span><br>       
+        <span class="welcome-text">Tel:</span><br>
+        <span class="welcome-text">012 22 66 11 - 0966 22 66 11</span><br>
+        <span class="welcome-text">070 22 66 11 - 0977 22 66 11</span>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/sweetalert2.min.js"></script>
+    <script>
+        function goToHome() {
+            window.location.replace("home.html");
+        }
+    </script>
+</body>
+
+</html>
