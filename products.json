@@ -147,5 +147,5 @@
     { "id": 140, "name": "ស៊ុប ប៉ាវហ៊ី", "image": "images/ស៊ុប ប៉ាវហ៊ី.jpg", "category": "soup" },
     { "id": 141, "name": "ឆាសរសៃកែង", "image": "images/ឆាសរសៃកែង.jpg", "category": "frying" },
     { "id": 82, "name": "ស្ថេកសាច់គោ", "image": "images/ស្ថេកសាច់គោ.jpg", "category": "food" },
-    { "id": 142, "name": "ប្រភេទទី1", "image": "", "category": "factory" },
+    { "id": 142, "name": "ប្រភេទទី1", "image": "", "category": "factory" }
 ]
