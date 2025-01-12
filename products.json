@@ -147,5 +147,14 @@
     { "id": 140, "name": "ស៊ុប ប៉ាវហ៊ី", "image": "images/ស៊ុប ប៉ាវហ៊ី.jpg", "category": "soup" },
     { "id": 141, "name": "ឆាសរសៃកែង", "image": "images/ឆាសរសៃកែង.jpg", "category": "frying" },
     { "id": 82, "name": "ស្ថេកសាច់គោ", "image": "images/ស្ថេកសាច់គោ.jpg", "category": "food" },
-    { "id": 142, "name": "ប្រភេទទី1", "image": "", "category": "factory" }
+    { "id": 142, "name": "ប្រភេទទី1", "image": "", "category": "factory" },
+    { "id": 143, "name": "ប្រភេទទី2", "image": "", "category": "factory" },
+    { "id": 144, "name": "ប្រភេទទី3", "image": "", "category": "factory" },
+    { "id": 145, "name": "ប្រភេទទី4", "image": "", "category": "factory" },
+    { "id": 146, "name": "ប្រភេទទី5", "image": "", "category": "factory" },
+    { "id": 147, "name": "ប្រភេទទី6", "image": "", "category": "factory" },
+    { "id": 148, "name": "ប្រភេទទី7", "image": "", "category": "factory" },
+    { "id": 149, "name": "ប្រភេទទី8", "image": "", "category": "factory" },
+    { "id": 150, "name": "ប្រភេទទី9", "image": "", "category": "factory" },
+    { "id": 151, "name": "ប្រភេទទី10", "image": "", "category": "factory" }
 ]
