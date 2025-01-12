@@ -28,6 +28,7 @@
             <button id="tab-food" onclick="filterMenu('food')">គ្រឿងញ៉ាំ</button>
             <button id="tab-frying" onclick="filterMenu('frying')">គ្រឿងបំពង គ្រឿងឆា</button>
             <button id="tab-dessert" onclick="filterMenu('dessert')" style="margin-right: 30px;">គ្រឿងបាយ មីឆា បង្អែម</button>
+            <button id="tab-factory" onclick="filterMenu('factory)">ប្រភេទរោង</button>
         </div>
     </div>
 
@@ -225,12 +226,10 @@
                 return;
             }
 
-            console.log(date);
-
             const orderDetails = cart.map(item => `${item.name}`).join(', ');
             const cartList = cart.map(item => `- ${item.name}`).join('\n');
 
-            const message = `🛒 ការបញ្ជាទិញថ្មី\n📅 កាលបរិច្ឆេទកម្មវិធី: ${date}\n👤 ឈ្មោះ: ${username}\n📞 លេខទូរស័ព្ទ: ${phone}\n📋 បញ្ជី:\n${cartList}`;
+            const message = `🛒 ការបញ្ជាទិញថ្មី\n📅 កាលបរិច្ឆេទកម្មវិធី: ${date}\n👤 ឈ្មោះ: ${username}\n📞 លេខទូរស័ព្ទ: ${phone}\n⛩️ ប្រភេទរោង: ${factory}\n📋 បញ្ជី:\n${cartList}`;
 
             const TELEGRAM_BOT_TOKEN = '7670868218:AAFJZx7mNS-bT27Xw8JpPIUzae0lYV9IDVI';
             const CHAT_ID = '@foodorderump';
@@ -278,7 +277,8 @@
                 soup: "tab-soup", 
                 food: "tab-food", 
                 frying: "tab-frying", 
-                dessert: "tab-dessert"
+                dessert: "tab-dessert",
+                factory: "tab-factory"
             };
             updateActiveTab(tabMap[category]);
             renderMenu(category);
